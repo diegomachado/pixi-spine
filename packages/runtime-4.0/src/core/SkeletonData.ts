@@ -1,12 +1,12 @@
-import type {ISkeletonData} from "@pixi-spine/base";
-import type {Animation} from "./Animation";
-import {BoneData} from "./BoneData";
-import {SlotData} from "./SlotData";
-import {Skin} from "./Skin";
-import {EventData} from "./EventData";
-import {IkConstraintData} from "./IkConstraintData";
-import {TransformConstraintData} from "./TransformConstraintData";
-import {PathConstraintData} from "./PathConstraintData";
+import type { ISkeletonData } from "@pixi-spine/base";
+import type { Animation } from "./Animation";
+import { BoneData } from "./BoneData";
+import { EventData } from "./EventData";
+import { IkConstraintData } from "./IkConstraintData";
+import { PathConstraintData } from "./PathConstraintData";
+import { Skin } from "./Skin";
+import { SlotData } from "./SlotData";
+import { TransformConstraintData } from "./TransformConstraintData";
 
 /** Stores the setup pose and all of the stateless data for a skeleton.
  *
@@ -14,8 +14,19 @@ import {PathConstraintData} from "./PathConstraintData";
  * Guide.
  * @public
  * */
-export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Animation, EventData, IkConstraintData, TransformConstraintData, PathConstraintData> {
-
+export class SkeletonData
+    implements
+        ISkeletonData<
+            BoneData,
+            SlotData,
+            Skin,
+            Animation,
+            EventData,
+            IkConstraintData,
+            TransformConstraintData,
+            PathConstraintData
+        >
+{
     /** The skeleton's name, which by default is the name of the skeleton data file, if possible. May be null. */
     name: string;
 
@@ -78,7 +89,7 @@ export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Ani
     /** Finds a bone by comparing each bone's name. It is more efficient to cache the results of this method than to call it
      * multiple times.
      * @returns May be null. */
-    findBone (boneName: string) {
+    findBone(boneName: string) {
         if (!boneName) throw new Error("boneName cannot be null.");
         let bones = this.bones;
         for (let i = 0, n = bones.length; i < n; i++) {
@@ -88,18 +99,10 @@ export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Ani
         return null;
     }
 
-    findBoneIndex (boneName: string) {
-        if (!boneName) throw new Error("boneName cannot be null.");
-        let bones = this.bones;
-        for (let i = 0, n = bones.length; i < n; i++)
-            if (bones[i].name == boneName) return i;
-        return -1;
-    }
-
     /** Finds a slot by comparing each slot's name. It is more efficient to cache the results of this method than to call it
      * multiple times.
      * @returns May be null. */
-    findSlot (slotName: string) {
+    findSlot(slotName: string) {
         if (!slotName) throw new Error("slotName cannot be null.");
         let slots = this.slots;
         for (let i = 0, n = slots.length; i < n; i++) {
@@ -109,18 +112,10 @@ export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Ani
         return null;
     }
 
-    findSlotIndex (slotName: string) {
-        if (!slotName) throw new Error("slotName cannot be null.");
-        let slots = this.slots;
-        for (let i = 0, n = slots.length; i < n; i++)
-            if (slots[i].name == slotName) return i;
-        return -1;
-    }
-
     /** Finds a skin by comparing each skin's name. It is more efficient to cache the results of this method than to call it
      * multiple times.
      * @returns May be null. */
-    findSkin (skinName: string) {
+    findSkin(skinName: string) {
         if (!skinName) throw new Error("skinName cannot be null.");
         let skins = this.skins;
         for (let i = 0, n = skins.length; i < n; i++) {
@@ -133,7 +128,7 @@ export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Ani
     /** Finds an event by comparing each events's name. It is more efficient to cache the results of this method than to call it
      * multiple times.
      * @returns May be null. */
-    findEvent (eventDataName: string) {
+    findEvent(eventDataName: string) {
         if (!eventDataName) throw new Error("eventDataName cannot be null.");
         let events = this.events;
         for (let i = 0, n = events.length; i < n; i++) {
@@ -146,7 +141,7 @@ export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Ani
     /** Finds an animation by comparing each animation's name. It is more efficient to cache the results of this method than to
      * call it multiple times.
      * @returns May be null. */
-    findAnimation (animationName: string) {
+    findAnimation(animationName: string) {
         if (!animationName) throw new Error("animationName cannot be null.");
         let animations = this.animations;
         for (let i = 0, n = animations.length; i < n; i++) {
@@ -159,7 +154,7 @@ export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Ani
     /** Finds an IK constraint by comparing each IK constraint's name. It is more efficient to cache the results of this method
      * than to call it multiple times.
      * @return May be null. */
-    findIkConstraint (constraintName: string) {
+    findIkConstraint(constraintName: string) {
         if (!constraintName) throw new Error("constraintName cannot be null.");
         let ikConstraints = this.ikConstraints;
         for (let i = 0, n = ikConstraints.length; i < n; i++) {
@@ -172,7 +167,7 @@ export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Ani
     /** Finds a transform constraint by comparing each transform constraint's name. It is more efficient to cache the results of
      * this method than to call it multiple times.
      * @return May be null. */
-    findTransformConstraint (constraintName: string) {
+    findTransformConstraint(constraintName: string) {
         if (!constraintName) throw new Error("constraintName cannot be null.");
         let transformConstraints = this.transformConstraints;
         for (let i = 0, n = transformConstraints.length; i < n; i++) {
@@ -185,7 +180,7 @@ export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Ani
     /** Finds a path constraint by comparing each path constraint's name. It is more efficient to cache the results of this method
      * than to call it multiple times.
      * @return May be null. */
-    findPathConstraint (constraintName: string) {
+    findPathConstraint(constraintName: string) {
         if (!constraintName) throw new Error("constraintName cannot be null.");
         let pathConstraints = this.pathConstraints;
         for (let i = 0, n = pathConstraints.length; i < n; i++) {
@@ -195,8 +190,9 @@ export class SkeletonData implements ISkeletonData<BoneData, SlotData, Skin, Ani
         return null;
     }
 
-    findPathConstraintIndex (pathConstraintName: string) {
-        if (pathConstraintName == null) throw new Error("pathConstraintName cannot be null.");
+    findPathConstraintIndex(pathConstraintName: string) {
+        if (pathConstraintName == null)
+            throw new Error("pathConstraintName cannot be null.");
         let pathConstraints = this.pathConstraints;
         for (let i = 0, n = pathConstraints.length; i < n; i++)
             if (pathConstraints[i].name == pathConstraintName) return i;
