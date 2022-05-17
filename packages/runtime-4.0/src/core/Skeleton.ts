@@ -122,6 +122,15 @@ export class Skeleton implements ISkeleton<SkeletonData, Bone, Slot, Skin> {
         this.updateCache();
     }
 
+    findSlotIndex(slotName: string): number;
+    findSlotIndex(slotName: string): number;
+    findSlotIndex(slotName: any): number {
+        throw new Error("Method not implemented.");
+    }
+    findBoneIndex(boneName: string): number {
+        throw new Error("Method not implemented.");
+    }
+
     /** Caches information about bones and constraints. Must be called if the {@link #getSkin()} is modified or if bones,
      * constraints, or weighted path attachments are added or removed. */
     updateCache() {

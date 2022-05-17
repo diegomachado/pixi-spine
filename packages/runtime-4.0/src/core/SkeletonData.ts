@@ -99,6 +99,12 @@ export class SkeletonData
         return null;
     }
 
+    // Deprecated in 4.0, just fixed the implementation to follow the shared ISkeletonData located @ base
+    findBoneIndex(boneName: string) {
+        let bone = this.findBone(boneName);
+        return bone !== null ? bone.index : -1;
+    }
+
     /** Finds a slot by comparing each slot's name. It is more efficient to cache the results of this method than to call it
      * multiple times.
      * @returns May be null. */
@@ -110,6 +116,12 @@ export class SkeletonData
             if (slot.name == slotName) return slot;
         }
         return null;
+    }
+
+    // Deprecated in 4.0, just fixed the implementation to follow the shared ISkeletonData located @ base
+    findSlotIndex(slotName: string) {
+        let slot = this.findSlot(slotName);
+        return slot !== null ? slot.index : -1;
     }
 
     /** Finds a skin by comparing each skin's name. It is more efficient to cache the results of this method than to call it
